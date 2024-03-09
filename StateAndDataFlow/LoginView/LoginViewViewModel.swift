@@ -6,10 +6,14 @@
 //
 
 import Foundation
-import Combine
 
-final class LoginViewViewModel: ObservableObject {    
-    var name = ""
+final class LoginViewViewModel: ObservableObject {
+    
+    var name = "" {
+        didSet {
+            charactersCount()
+        }
+    }
     
     @Published var nameCharactersCount = 0
     @Published var isLoggedIn = false
