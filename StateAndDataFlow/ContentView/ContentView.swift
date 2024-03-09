@@ -44,7 +44,8 @@ struct ContentView: View {
     }
     
     private func logout() {
-        loginViewVM.isLoggedIn = false
+        loginViewVM.isLoggedIn.toggle()
+        loginViewVM.name = ""
     }
 }
 
