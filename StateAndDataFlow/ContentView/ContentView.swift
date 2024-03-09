@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject private var loginViewVM: LoginViewViewModel
     
     var body: some View {
+        
         VStack {
             Text("Hi, \(loginViewVM.name)!")
                 .padding(.top, 100)
@@ -25,7 +26,25 @@ struct ContentView: View {
             ButtonView(contentViewVM: contentViewVM)
             
             Spacer()
+            
+            Button(action: logout) {
+                Text("Logout")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 200, height: 60)
+            .background(.blue)
+            .clipShape(.rect(cornerRadius: 20))
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(.black, lineWidth: 4)
+            )
         }
+    }
+    
+    private func logout() {
+        loginViewVM.isLoggedIn = false
     }
 }
 
