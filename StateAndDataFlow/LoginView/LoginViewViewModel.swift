@@ -6,8 +6,22 @@
 //
 
 import Foundation
+import Combine
 
 final class LoginViewViewModel: ObservableObject {
-    var name = ""
+    let objectWillChange = ObservableObjectPublisher()
+    
+    var name = "" {
+        didSet {
+            charactersCount()
+        }
+    }
+    
+    var nameCharactersCount = 0
     @Published var isLoggedIn = false
+    
+    private func charactersCount() {
+        nameCharactersCount = name.count
+        objectWillChange.send()
+    }
 }
