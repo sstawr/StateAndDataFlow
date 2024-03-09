@@ -29,13 +29,14 @@ struct LoginView: View {
             Button(action: login) {
                 Label("OK", systemImage: "checkmark.circle")
             }
-            .disabled(isDisable)
+//            .disabled(isDisable)
         }
         .padding()
     }
     
     private func login() {
         if !loginViewVM.name.isEmpty {
+            loginViewVM.name = ""
             loginViewVM.isLoggedIn.toggle()
         }
     }
